@@ -1,0 +1,31 @@
+[
+  {"largeclass": "红茶","smallclass":"祁红","class_id":"0000"},
+  {"largeclass": "红茶","smallclass":"昭平红","class_id":"0001"},
+
+  {"largeclass": "绿茶","smallclass":"龙井茶","class_id":"0100"},
+  {"largeclass": "绿茶","smallclass":"碧螺春茶","class_id":"0101"},
+
+  {"largeclass": "白茶","smallclass":"白牡丹","class_id":"0200"},
+  {"largeclass": "白茶","smallclass":"贡眉","class_id":"0201"},
+
+  {"largeclass": "黑茶","smallclass":"三尖","class_id":"0300"},
+  {"largeclass": "黑茶","smallclass":"茯砖","class_id":"0301"},
+
+  {"largeclass": "乌龙茶","smallclass":"安溪铁观音","class_id":"0400"},
+  {"largeclass": "乌龙茶","smallclass":"凤凰水仙","class_id":"0401"},
+
+  {"largeclass": "花茶","smallclass":"玫瑰花茶","class_id":"0500"},
+  {"largeclass": "花茶","smallclass":"杜仲花草茶","class_id":"0501"},
+
+  {"largeclass": "黄茶","smallclass":"海马宫茶","class_id":"0600"},
+  {"largeclass": "黄茶","smallclass":"海马宫茶","class_id":"0601"},
+
+  {"largeclass": "药茶","smallclass":"降压茶","class_id":"0700"},
+  {"largeclass": "药茶","smallclass":"清眩茶","class_id":"0701"},
+
+  {"largeclass": "茶具","smallclass":"茶坞","class_id":"0800"},
+  {"largeclass": "茶具","smallclass":"茶人","class_id":"0801"},
+
+  {"largeclass": "其它","smallclass":"其它0","class_id":"0900"},
+  {"largeclass": "其它","smallclass":"其它1","class_id":"0901"}
+]
