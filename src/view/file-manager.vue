@@ -5,18 +5,25 @@
 <script>
   import axios from 'axios'
   export default {
+    data(){
+      return{
+        PHP_interface: 'http://101.132.46.146:8080/elfinder/php/connector.minimal.php',
+      }
+    },
     mounted(){
+      console.log(JSON.parse(localStorage.getItem('resData')))
+      let user_info = JSON.parse(localStorage.getItem('resData'))
       let _this = this;
       $(function() {
         $('#elfinder').elfinder(
           {
             cssAutoLoad : false,
             baseUrl : './',
-            url : _this.dataInterface + ':8080/elfinder/php/connector.minimal.php',
+            url : _this.PHP_interface + '?username='+user_info.user_name,
             getFileCallback : function(file) {},
             handlers : {
               select : function(event, elfinderInstance) {
-                axios.get(_this.dataInterface + ":8080/elfinder/php/connector.minimal.php",{params: {
+                axios.get(_this.PHP_interface,{params: {
                     cmd : 'info',
                     targets : event.data.selected
                   }})

@@ -95,6 +95,10 @@
       init(){
         let _this = this
         GoodsDbOperation.GetGoods(_this.dataInterface).then(res => {
+          if (res.success==false){
+            this.$router.push({path:'/login'})
+          }
+          // console.log(res)
           this.goodsData = res
         })
       },

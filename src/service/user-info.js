@@ -5,6 +5,7 @@ function ValidateLogon(url,val) {
   return new Promise((resolve, reject) => {
     axios.post(url+":3030/user/login",data)
       .then(res => {
+        // console.log(res)
         resolve(res.data)
       })
       .catch(err=>{

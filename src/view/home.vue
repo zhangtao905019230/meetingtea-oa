@@ -66,12 +66,12 @@
         <el-header height="60px" style="background:#EFF2F7">
           <el-dropdown style="float: right;margin-right: 20px;margin-top: 5px" @command="handleCommand">
             <span class="user-operation" style="display: flex;align-items: center">
-              <img src="https://herozhou.github.io/vue-framework-wz/static/img/avatars/6.jpg" alt="" style="border-radius: 50%;margin-right: 10px">
-              <span>admin</span>
+              <img src="./../assets/touxiang.png" alt="" style="border-radius: 50%;margin-right: 10px;height: 50px">
+              <span>{{nickname}}</span>
               <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item command="a">消息中心</el-dropdown-item>
+              <el-dropdown-item command="a">您是<span style="color: red"> {{role}}</span></el-dropdown-item>
               <el-dropdown-item command="b" divided>设置</el-dropdown-item>
               <el-dropdown-item command="sign_out">退出</el-dropdown-item>
             </el-dropdown-menu>
@@ -91,6 +91,27 @@
     components:{
       logo
     },
+    data(){
+      return{
+        nickname: ''
+      }
+    },
+    mounted(){
+      // console.log()
+      let obj =JSON.parse(localStorage.getItem('resData'))
+      this.nickname = obj.nickname
+      console.log(obj)
+    },
+    computed:{
+      role(){
+        let obj =JSON.parse(localStorage.getItem('resData'))
+        if (obj.role == 'user'){
+          return '普通用户'
+        } else {
+          return '超级用户'
+        }
+      }
+    },
     methods: {
       handleOpen(key, keyPath) {
       },
@@ -108,8 +129,8 @@
         }
       },
       handleCommand(command) {
-
         if (command == "sign_out"){
+          localStorage.setItem('token','no')
           this.$router.push({path:"/login"})
           this.$message('退出登录')
         }

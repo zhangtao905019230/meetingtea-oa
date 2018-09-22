@@ -56,10 +56,11 @@ export default {
         .then(res => {
           if (res == 'no'){
             this.$message('账号密码错误')
-
           }else {
-            // this.$router.push({path:'/home'})
             console.log(res)
+            localStorage.setItem('resData',JSON.stringify(res.resData))
+            localStorage.setItem('token', res.token)
+            this.$router.push({path:'/home'})
           }
         }
       )

@@ -106,7 +106,7 @@
           },
           price: 0,
           no_discount_price: 0,
-          figure_img: this.dataInterface + ':8080/elfinder/files/image-test/masichun0.jpg'
+          figure_img: ''
         },
         addGoodsRules: {
           classification: [

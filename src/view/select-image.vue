@@ -28,6 +28,7 @@
   export default {
     data(){
       return {
+        PHP_interface: 'http://101.132.46.146:8080/elfinder/php/connector.minimal.php',
         dialogVisible: false,
         selectImageUrl:'',
         currentlySelectedFiles:'',
@@ -46,13 +47,15 @@
           .catch(_ => {});
       },
       initElfinder(){
+        console.log(JSON.parse(localStorage.getItem('resData')))
+        let user_info = JSON.parse(localStorage.getItem('resData'))
         let _this = this
         $(function() {
           $('#elfinder').elfinder(
             {
               cssAutoLoad : false,
               baseUrl : './',
-              url : _this.dataInterface+':8080/elfinder/php/connector.minimal.php',
+              url : _this.PHP_interface + '?username='+user_info.user_name,
               getFileCallback : function(file) {},
               handlers : {
                 select : function(event, elfinderInstance) {
@@ -103,14 +106,14 @@
       getImageUrl(){
         let _this = this
         _this.fullscreenLoading = true;
-        axios.get(_this.dataInterface+":8080/elfinder/php/connector.minimal.php",{params: {
+        axios.get(_this.PHP_interface,{params: {
             cmd : 'info',
             targets : _this.currentlySelectedFiles
           }}).
         then(res => {
           // console.log(res)
           _this.fullscreenLoading = false;
-          _this.selectImageUrl = _this.dataInterface+':8080/elfinder/' + res.data.files[0].path.replace(/\\/g, '/')
+          _this.selectImageUrl = 'http://101.132.46.146:8080/elfinder/files/' + res.data.files[0].path.replace(/\\/g, '/')
 
         })
       },
