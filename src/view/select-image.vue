@@ -101,20 +101,18 @@
         setTimeout(()=>{
           this.initElfinder()
         },0)
-
       },
       getImageUrl(){
         let _this = this
         _this.fullscreenLoading = true;
         axios.get(_this.PHP_interface,{params: {
+            username: JSON.parse(localStorage.getItem('resData')).user_name,
             cmd : 'info',
             targets : _this.currentlySelectedFiles
           }}).
         then(res => {
-          // console.log(res)
           _this.fullscreenLoading = false;
           _this.selectImageUrl = 'http://101.132.46.146:8080/elfinder/files/' + res.data.files[0].path.replace(/\\/g, '/')
-
         })
       },
       confirmSelect(){
