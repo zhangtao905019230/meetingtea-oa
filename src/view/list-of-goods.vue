@@ -10,7 +10,7 @@
               <span>{{ props.row._id }}</span>
             </el-form-item>
             <el-form-item label="商品分类">
-              <span>{{ handleClassification(props.row.classification) }}{{classificationContainer}}</span>
+              <span>{{ handleClassification(props.row.classification) }}</span>
             </el-form-item>
             <el-form-item label="中文名称">
               <span>{{ props.row.zh_title }}</span>
@@ -35,16 +35,20 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="商品 ID"
-        prop="_id">
+        type="index"
+        width="60"
+        label="序号">
       </el-table-column>
       <el-table-column
-        label="中文标题"
+        label="中文名称"
         prop="zh_title">
       </el-table-column>
       <el-table-column
-        label="中文描述"
-        prop="zh_desc">
+        label="商品分类"
+        prop="classification">
+        <template slot-scope="scope">
+          <span>{{handleClassification(scope.row.classification)}}</span>
+        </template>
       </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
@@ -84,6 +88,7 @@
     data() {
       return {
         goodsData:[],
+        handleGoodsData:[],
         classificationContainer:"",
         fullscreenLoading:false
       }
@@ -98,7 +103,6 @@
           if (res.success==false){
             this.$router.push({path:'/login'})
           }
-          // console.log(res)
           this.goodsData = res
         })
       },
@@ -112,8 +116,7 @@
         }
       },
       handleClassification(val){
-        val = JSON.parse(val)
-        AllTypesOfTea.transferenceClass(val).then(res => {this.classificationContainer = res})
+        return AllTypesOfTea.transferenceClass(JSON.parse(val))
       },
       handleDelete(index,row){
         this.fullscreenLoading = true;
