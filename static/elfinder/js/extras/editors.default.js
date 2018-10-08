@@ -347,8 +347,14 @@
 					ver  = 'latest',
 					init = function(editor) {
 						var $base = $(base),
+							bParent = $base.parent(),
 							opts = self.confObj.opts,
 							iconsPath = opts.iconsPath,
+							tmpContainer = $('<div class="tui-image-editor-container">').appendTo(bParent),
+							tmpDiv = [
+								$('<div class="tui-image-editor-submenu"/>').appendTo(tmpContainer),
+								$('<div class="tui-image-editor-controls"/>').appendTo(tmpContainer)
+							],
 							iEditor = new editor(base, {
 								includeUI: {
 									loadImage: {
@@ -370,8 +376,8 @@
 									initMenu: 'filter',
 									menuBarPosition: 'bottom'
 								},
-								cssMaxWidth: 700,
-								cssMaxHeight: 500
+								cssMaxWidth: Math.max(300, bParent.width()),
+								cssMaxHeight: Math.max(200, bParent.height() - (tmpDiv[0].height() + tmpDiv[1].height() + 3 /*margin*/))
 							}),
 							canvas = $base.find('canvas:first').get(0),
 							zoom = function(v) {
@@ -416,6 +422,7 @@
 							per = $('<button/>').css('width', '4em').text('%').attr('title', '100%').data('val', 0),
 							quty, qutyTm, zoomTm, zoomMore;
 
+						tmpContainer.remove();
 						$base.removeData('url').data('mime', self.file.mime);
 						// jpeg quality controls
 						if (self.file.mime === 'image/jpeg') {
@@ -1703,7 +1710,8 @@
 											reject(fm.i18n(data.error? data.error : 'errUpload'));
 										}
 									})
-									.fail(function(error) {
+									.fail(function(err) {
+										var error = fm.parseError(err);
 										reject(fm.i18n(error? (error === 'userabort'? 'errAbort' : error) : 'errUploadNoFiles'));
 									})
 									.progress(function(data) {
@@ -2451,7 +2459,7 @@
 								fm.error(err.length? err : status.info);
 								select.fadeIn();
 							} else if (status.code === 'completed') {
-								upload(res.output);
+								upload(res);
 							} else {
 								setStatus(status);
 								setTimeout(function() {
@@ -2502,8 +2510,10 @@
 							ta.elfinderdialog('destroy');
 						});
 					},
-					upload = function(output) {
-						var url = '';
+					upload = function(res) {
+						var output = res.output,
+							id = res.id,
+							url = '';
 						spnr.hide();
 						if (output && output.length) {
 							ta.elfinderdialog('destroy');
@@ -2515,7 +2525,10 @@
 							fm.upload({
 								target: file.phash,
 								files: [url],
-								type: 'text'
+								type: 'text',
+								extraData: {
+									contentSaveId: 'OnlineConvert-' + res.id
+								}
 							});
 						}
 					},

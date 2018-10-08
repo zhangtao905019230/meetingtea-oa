@@ -54,7 +54,7 @@
           $('#elfinder').elfinder(
             {
               cssAutoLoad : false,
-              baseUrl : './',
+              baseUrl : '/static/elfinder/',
               url : _this.PHP_interface + '?username='+user_info.user_name,
               getFileCallback : function(file) {},
               handlers : {
