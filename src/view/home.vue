@@ -6,8 +6,8 @@
     <el-container style="height: 100%;">
       <el-aside style="width: 236px;background-color: #343c4a">
         <logo zoomVal="0.7" style="margin-top: 10px"></logo>
-        <div style="display: flex;justify-content: space-between;align-items: center;padding: 0 5px 0 20px">
-          <span style="color: #fff;line-height: 50px">meetingtea.top</span>
+        <div style="display: flex;justify-content: space-between;align-items: center;padding: 0 5px 0 20px;cursor: pointer" @click="goMeetingTea">
+          <span style="color: #fff;line-height: 50px" >meetingtea.top</span>
           <div style="background-color: #4cc1b2;width: 5px;height: 25px"></div>
         </div>
         <el-menu
@@ -29,6 +29,10 @@
               <el-menu-item index="1-1">
                 <!--<i class="iconfont icon-shangpinliebiao"></i>-->
                 <span class="iconfont icon-shangpinliebiao">商品列表</span>
+              </el-menu-item>
+              <el-menu-item index="1-2">
+                <!--<i class="iconfont icon-shangpinliebiao"></i>-->
+                <span class="iconfont icon-yonghuliebiao">用户列表</span>
               </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
@@ -124,6 +128,8 @@
           this.$router.push({name:"list-of-goods"})
         }else if (key == "2-2"){
           this.$router.push({name:"add-goods"})
+        }else if (key == "1-2"){
+          this.$router.push({name:"list-of-users"})
         }else {
           alert("还未开发！")
         }
@@ -134,6 +140,9 @@
           this.$router.push({path:"/login"})
           this.$message('退出登录')
         }
+      },
+      goMeetingTea(){
+        window.open("http://www.meetingtea.top:8000");                 //在另外新建窗口中打开窗口
       }
     }
   }
