@@ -34,6 +34,10 @@
                 <!--<i class="iconfont icon-shangpinliebiao"></i>-->
                 <span class="iconfont icon-yonghuliebiao">用户列表</span>
               </el-menu-item>
+              <el-menu-item index="1-3">
+                <!--<i class="iconfont icon-shangpinliebiao"></i>-->
+                <span class="iconfont icon-wenzhang">文章列表</span>
+              </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="2">
@@ -130,6 +134,8 @@
           this.$router.push({name:"add-goods"})
         }else if (key == "1-2"){
           this.$router.push({name:"list-of-users"})
+        }else if (key == "1-3"){
+          this.$router.push({name:"list-of-articles"})
         }else {
           alert("还未开发！")
         }

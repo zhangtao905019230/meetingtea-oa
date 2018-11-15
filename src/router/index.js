@@ -4,6 +4,7 @@ import home from './../view/home'
 import FileManager from './../view/file-manager'
 import ListOfGoods from './../view/list-of-goods'
 import ListOfUsers from './../view/list-of-users'
+import ListOfArticles from './../view/list-of-articles'
 import AddGoods from './../view/add-goods'
 import login from './../view/login'
 
@@ -42,6 +43,11 @@ const router = new Router({
           path: 'list-of-users',
           name: 'list-of-users',
           component: ListOfUsers,
+        },
+        {
+          path: 'list-of-articles',
+          name: 'list-of-articles',
+          component: ListOfArticles,
         },
         {
           path: 'add-goods',

@@ -44,6 +44,14 @@
         prop="zh_title">
       </el-table-column>
       <el-table-column
+        label="价格"
+        prop="no_discount_price">
+      </el-table-column>
+      <el-table-column
+        label="折扣价格"
+        prop="price">
+      </el-table-column>
+      <el-table-column
         label="商品分类"
         prop="classification">
         <template slot-scope="scope">
