@@ -1,12 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from './../view/home'
-import FileManager from './../view/file-manager'
-import ListOfGoods from './../view/list-of-goods'
-import ListOfUsers from './../view/list-of-users'
-import ListOfArticles from './../view/list-of-articles'
-import AddGoods from './../view/add-goods'
-import login from './../view/login'
 
 Vue.use(Router)
 
@@ -19,40 +12,61 @@ const router = new Router({
     {
       path: '/login',
       name: 'login',
-      component: login},
+      component: resolve => require(['../view/login'], resolve)
+    },
     {
       path: '/home',
-      redirect:'/home/add-goods'
+      redirect:'/home/file-manager'
     },
     {
       path: '/home',
       name: 'home',
-      component: home,
+      component: resolve => require(['../view/home'], resolve),
       children:[
         {
           path: 'file-manager',
           name: 'file-manager',
-          component: FileManager,
+          component: resolve => require(['../view/file-manager'], resolve),
         },
         {
           path: 'list-of-goods',
           name: 'list-of-goods',
-          component: ListOfGoods,
+          component: resolve => require(['../view/data-management/list-of-goods'], resolve),
         },
         {
           path: 'list-of-users',
           name: 'list-of-users',
-          component: ListOfUsers,
+          component: resolve => require(['../view/data-management/list-of-users'], resolve),
         },
         {
           path: 'list-of-articles',
           name: 'list-of-articles',
-          component: ListOfArticles,
+          component: resolve => require(['../view/data-management/list-of-articles'], resolve),
+        },
+        {
+          path: 'list-of-testarticles',
+          name: 'list-of-testarticles',
+          component: resolve => require(['../view/data-management/list-of-testarticles'], resolve),
         },
         {
           path: 'add-goods',
           name: 'add-goods',
-          component: AddGoods,
+          component: resolve => require(['../view/add-data/add-goods'], resolve),
+        },
+        {
+          path: 'add-articles',
+          name: 'add-articles',
+          component: resolve => require(['../view/add-data/add-articles'], resolve),
+        },
+        {
+          path: 'dataset-mange',
+          name: 'dataset-mange',
+          component: resolve => require(['../view/ai-studio/dataset-manage'], resolve),
+        },
+        {
+          path: 'object-detection',
+          name: 'object-detection',
+          component: resolve => require(['../view/ai-studio/object-detection'], resolve),
         }
       ]
     }

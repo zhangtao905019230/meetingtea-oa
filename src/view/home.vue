@@ -22,50 +22,58 @@
           style="border-right: none;">
           <el-submenu index="1">
             <template slot="title">
-              <!--<i class="iconfont icon-shujuguanli"></i>-->
               <span class="iconfont icon-shujuguanli">数据管理</span>
             </template>
             <el-menu-item-group>
               <el-menu-item index="1-1">
-                <!--<i class="iconfont icon-shangpinliebiao"></i>-->
                 <span class="iconfont icon-shangpinliebiao">商品列表</span>
               </el-menu-item>
               <el-menu-item index="1-2">
-                <!--<i class="iconfont icon-shangpinliebiao"></i>-->
                 <span class="iconfont icon-yonghuliebiao">用户列表</span>
               </el-menu-item>
               <el-menu-item index="1-3">
-                <!--<i class="iconfont icon-shangpinliebiao"></i>-->
                 <span class="iconfont icon-wenzhang">文章列表</span>
+              </el-menu-item>
+              <el-menu-item index="1-4">
+                <span class="iconfont icon-wenzhang">test文章列表</span>
               </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="2">
             <template slot="title">
-              <!--<i class="iconfont icon-tianjiashuju"></i>-->
               <span class="iconfont icon-tianjiashuju">添加数据</span>
             </template>
             <el-menu-item-group>
               <el-menu-item index="2-1">
-                <!--<i class="iconfont icon-tianjiayonghu"></i>-->
                 <span class="iconfont icon-tianjiayonghu">添加用户</span>
               </el-menu-item>
               <el-menu-item index="2-2">
-                <!--<i class="iconfont icon-tianjiashangpin"></i>-->
                 <span class="iconfont icon-tianjiashangpin">添加商品</span>
+              </el-menu-item>
+              <el-menu-item index="2-3">
+                <span class="iconfont icon-tianjiashangpin">添加文章</span>
               </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
+
+          <el-submenu index="3">
+            <template slot="title">
+              <span class="iconfont icon-tianjiashuju">AI Studio</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="3-1">
+                <span class="iconfont icon-tianjiayonghu">数据集</span>
+              </el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
+
           <el-menu-item index="3">
-            <!--<i class="iconfont icon-dingdan"></i>-->
             <span slot="title" class="iconfont icon-dingdan">订单管理</span>
           </el-menu-item>
           <el-menu-item index="4">
-            <!--<i class="iconfont icon-wenjianguanli"></i>-->
             <span slot="title" class="iconfont icon-wenjianguanli">后台文件管理</span>
           </el-menu-item>
           <el-menu-item index="5">
-            <!--<i class="iconfont icon-shezhi"></i>-->
             <span slot="title" class="iconfont icon-shezhi">修改资料</span>
           </el-menu-item>
         </el-menu>
@@ -85,7 +93,7 @@
             </el-dropdown-menu>
           </el-dropdown>
         </el-header>
-        <el-main style="background:#fff">
+        <el-main style="background:#fff;height: 100%">
           <router-view></router-view>
         </el-main>
       </el-container>
@@ -105,14 +113,13 @@
       }
     },
     mounted(){
-      // console.log()
       let obj =JSON.parse(localStorage.getItem('resData'))
       this.nickname = obj.nickname
       console.log(obj)
     },
     computed:{
       role(){
-        let obj =JSON.parse(localStorage.getItem('resData'))
+        let obj=JSON.parse(localStorage.getItem('resData'))
         if (obj.role == 'user'){
           return '普通用户'
         } else {
@@ -136,6 +143,12 @@
           this.$router.push({name:"list-of-users"})
         }else if (key == "1-3"){
           this.$router.push({name:"list-of-articles"})
+        }else if (key == "2-3"){
+          this.$router.push({name:"add-articles"})
+        }else if (key == "1-4"){
+          this.$router.push({name:"list-of-testarticles"})
+        }else if (key == "3-1"){
+          this.$router.push({name:"dataset-mange"})
         }else {
           alert("还未开发！")
         }
