@@ -136,7 +136,10 @@
         if(key == "4"){
           this.$router.push({name:"file-manager"})
         }else if (key == "1-1"){
-          this.$router.push({name:"list-of-goods"})
+          this.$router.push({name:"list-of-goods",params:{
+            a:{sss:'sss'},
+            b:2
+          }})
         }else if (key == "2-2"){
           this.$router.push({name:"add-goods"})
         }else if (key == "1-2"){

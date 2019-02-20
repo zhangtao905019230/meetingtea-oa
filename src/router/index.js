@@ -15,6 +15,11 @@ const router = new Router({
       component: resolve => require(['../view/login'], resolve)
     },
     {
+      path: '/markdown-editor',
+      name:'markdown-editor',
+      component: resolve => require(['../widget/markdown-editor'], resolve)
+    },
+    {
       path: '/home',
       redirect:'/home/file-manager'
     },
@@ -29,7 +34,7 @@ const router = new Router({
           component: resolve => require(['../view/file-manager'], resolve),
         },
         {
-          path: 'list-of-goods',
+          path: 'list-of-goods/:a/:b',
           name: 'list-of-goods',
           component: resolve => require(['../view/data-management/list-of-goods'], resolve),
         },

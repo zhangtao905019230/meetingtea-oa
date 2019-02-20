@@ -6,32 +6,34 @@
       <el-table-column
         type="index"
         label="序号"
+        width="50"
       >
       </el-table-column>
       <el-table-column
-        prop="articleVal"
-        label="文章内容"
+        prop="arctic_id"
+        label="文章id"
+        width="80"
       >
       </el-table-column>
       <el-table-column
-        prop="createTime"
+        prop="title"
+        label="标题"
+      >
+      </el-table-column>
+      <el-table-column
+        prop="dec"
+        label="描述"
+      >
+      </el-table-column>
+      <el-table-column
+        prop="createtime"
         label="创建时间"
       >
-        <template slot-scope="scope">
-          <span>{{handleCreateTime(scope.row.createTime)}}</span>
-        </template>
       </el-table-column>
-
-      <el-table-column label="操作">
-        <template slot-scope="scope">
-          <el-button
-            size="mini"
-            @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-          <el-button
-            size="mini"
-            type="danger"
-            @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-        </template>
+      <el-table-column
+        prop="labels"
+        label="标签"
+      >
       </el-table-column>
     </el-table>
   </div>

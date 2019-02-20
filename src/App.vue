@@ -30,9 +30,11 @@
   .icon-wenzhang:before{content: "\e6a9"}
 </style>
 <script>
+  import axios from 'axios'
   export default {
     mounted(){
       // console.log(this.process,'xsaxsaca')
+      axios.get('http://localhost:8000/hhh').then(res=>{console.log(res)})
     }
   }
 </script>

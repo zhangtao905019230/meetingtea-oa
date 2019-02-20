@@ -54,7 +54,7 @@
       }
     },
     mounted(){
-      axios.get(this.dataInterface + ":3030/articles/details",{params:{page:1}}).then(res=>{
+      axios.get(this.dataInterface + ":3030/oa-articles/details",{params:{page:1}}).then(res=>{
         console.log(res)
         this.tableData = res.data.articleArr
         this.totalPages = (res.data.totalPages-1)*10
@@ -65,7 +65,7 @@
         // console.log(val);
         // this.currentPage = val
 
-        axios.get(this.dataInterface + ":3030/articles",{params:{page:val}}).then(res=>{
+        axios.get(this.dataInterface + ":3030/oa-articles",{params:{page:val}}).then(res=>{
           console.log(res)
           this.tableData = res.data.articleArr
           // this.totalPages = 1000

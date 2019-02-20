@@ -103,6 +103,7 @@
     },
     mounted(){
       this.init();
+      console.log(this.$route)
     },
     methods:{
       init(){

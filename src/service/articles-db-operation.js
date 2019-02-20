@@ -2,7 +2,7 @@ import axios from 'axios'
 
 function GetArticle(url,req) {
   return new Promise((resolve, reject) => {
-    axios.get(url + ":3030/articles/getTestArticle")
+    axios.get(url + ":3030/oa-articles/getTestArticle")
       .then(res => {
         resolve(res)
       })
@@ -14,7 +14,7 @@ function GetArticle(url,req) {
 
 function AddArticle(url,req) {
   return new Promise((resolve, reject) => {
-    axios.get(url + ":3030/articles/addArticle",{params:req})
+    axios.get(url + ":3030/oa-articles/addArticle",{params:req})
       .then(res => {
         resolve(res)
       })
@@ -26,7 +26,7 @@ function AddArticle(url,req) {
 
 function DelArticle(url,req) {
   return new Promise((resolve, reject) => {
-    axios.get(url + ":3030/articles/delArticle",{params:req})
+    axios.get(url + ":3030/oa-articles/delArticle",{params:req})
       .then(res => {
         resolve(res)
       })

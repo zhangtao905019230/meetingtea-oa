@@ -6,6 +6,9 @@
       <el-table-column type="expand">
         <template slot-scope="props">
           <el-form label-position="left" inline class="demo-table-expand">
+            <el-form-item label="头像">
+              <span>{{ props.row.touxiang }}</span>
+            </el-form-item>
           </el-form>
         </template>
       </el-table-column>
@@ -31,11 +34,6 @@
       <el-table-column
         label="邮箱"
         prop="mailbox">
-      </el-table-column>
-
-      <el-table-column
-        label="头像"
-        prop="touxiang">
       </el-table-column>
     </el-table>
   </div>

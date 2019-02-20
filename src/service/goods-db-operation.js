@@ -24,7 +24,7 @@ axios.interceptors.response.use(
 
 function AddGoods(val,url) {
   return new Promise((resolve, reject) => {
-    axios.get(url + ":3030/goods/addGoods",{params:val})
+    axios.get(url + ":3030/oa-goods/addGoods",{params:val})
       .then(res => {
         if (res.data == 'ok'){
           resolve('ok')
@@ -40,7 +40,7 @@ function AddGoods(val,url) {
 
 function GetGoods(url) {
   return new Promise((resolve, reject) => {
-    axios.get(url + ":3030/goods/getGoods")
+    axios.get(url + ":3030/oa-goods/getGoods")
       .then(res => {
         resolve(res.data)
       })
@@ -52,7 +52,7 @@ function GetGoods(url) {
 
 function DelGoods(id,url) {
   return new Promise((resolve, reject) => {
-    axios.get(url + ":3030/goods/delGoods",{params:id})
+    axios.get(url + ":3030/oa-goods/delGoods",{params:id})
       .then(res => {
         resolve(res.data)
       })
@@ -64,7 +64,7 @@ function DelGoods(id,url) {
 
 function UpdateGoods(id,val,url){
   return new Promise((resolve, reject) => {
-    axios.get(url + ":3030/goods/updateGoods",{params:{id,val}})
+    axios.get(url + ":3030/oa-goods/updateGoods",{params:{id,val}})
       .then(res => {
         if (res.data == 'ok'){
           resolve('ok')
